@@ -56,8 +56,39 @@
 
 # In[33]:
 
+import sys
 
 
+sys.path.append('..\\M07_funciones')
+import Prep_Course_Homework_07 as funciones
+#print(sys.path)
+
+class Operaciones():
+    def __init__(self,lista):
+        self.lista=[]
+        for i in lista:
+            if (type(i)!=int):
+                raise ValueError("El valor del elemento {} no corresponde a un entero".format(i))
+            else:
+                self.lista.append(i)
+        
+    def es_primo(self):
+        
+        for i, j in zip(self.lista,funciones.evalListaPrimos(self.lista)):
+            if j:
+                print("El numero {} es primo".format(i))
+            else:
+                print("El numero {} no es primo".format(i))
+    
+    def moda(self):
+        numero, maximo = funciones.num_repetido(self.lista)
+        print("El numero que mas se repite de la listas es {} repitiendose {} veces".format(numero, maximo))
+        
+    def conversion(self,index=0,origen="Celsius",destino="Farenheit"):
+        print("Si la temperatura en {} es {} entonces en {} es {}".format(origen,self.lista[index],destino,funciones.conversion(self.lista[index],origen,destino)))
+        
+    def factorial(self,index=0):
+        print("El factorial de {} es igual a {}".format(self.lista[index],funciones.factorial(self.lista[index])))
 
 
 
